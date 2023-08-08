@@ -10,7 +10,7 @@
     ffmpeg = pkgs.ffmpeg_5-full;
 
   in {
-    packages.x86_64-linux.default = pkgs.writeShellScript "webcam" ''
+    packages.x86_64-linux.default = pkgs.writeShellScriptBin "webcam" ''
       export PATH=${pkgs.lib.makeBinPath [ ffmpeg v4l-utils ]}:$PATH
 
       case "''$1" in
