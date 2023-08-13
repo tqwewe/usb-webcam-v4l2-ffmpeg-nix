@@ -16,7 +16,7 @@
       case "''$1" in
         setup)
           sudo modprobe -r v4l2loopback
-          sudo modprobe v4l2loopback video_nr=5 card_label="GoPro" exclusive_caps=1
+          sudo modprobe v4l2loopback devices=2 video_nr=4,5 card_label="OBS,GoPro"
           ;;
         start)
           ffmpeg -f v4l2 -input_format mjpeg -r 30 -i /dev/video1 -vcodec rawvideo -pix_fmt rgb24 -r 30 -f v4l2 /dev/video5 > /dev/null 2>&1 &
